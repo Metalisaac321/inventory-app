@@ -1,3 +1,5 @@
-<p>
-    {{productList | json}}
-</p>
+<div class="grid grid-cols-1 gap-4">
+    <product-row *ngFor='let myProduct of productList' [product]='myProduct' (click)='clicked(myProduct)'
+        [class.selected]="isSelected(myProduct)">
+    </product-row>
+</div>
