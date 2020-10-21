@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -7,8 +7,9 @@ import { Product } from '../models/product.model';
 })
 export class ProductsListComponent {
   @Input() productList: Product[];
-  @Output() onProductSelected: EventEmitter<Product> = new EventEmitter();
+  @HostBinding('class') cssClass = 'grid grid-cols-1 gap-4'
 
+  @Output() onProductSelected: EventEmitter<Product> = new EventEmitter();
   currentProduct: Product;
 
   clicked(product: Product) {
@@ -22,5 +23,4 @@ export class ProductsListComponent {
     }
     return product.sku === this.currentProduct.sku;
   }
-
 }

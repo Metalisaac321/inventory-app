@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'price-display',
-  templateUrl: './price-display.component.html',
+  template: `
+    <div>\${{ price }}</div>
+  `
+
 })
-export class PriceDisplayComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class PriceDisplayComponent {
+  @Input() price: number;
+  @HostBinding('class') cssClass = 'justify-self-end';
 }
